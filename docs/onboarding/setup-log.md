@@ -1,7 +1,7 @@
 # PREIshare setup log
 
 **Learner:** John Bennett
-**Date:** 2026-09-09
+**Date:** 2026-11-08
 **OS:** Linux Pop!_OS 24.04 LTS
 **Team repo (upstream):** https://github.com/EdTechForLearning/PREIShare-org-repo
 **Orientation notes used:** `docs/onboarding/team-orientation-notes.md`
@@ -10,17 +10,19 @@
 
 | Check | Result | Notes |
 | --- | --- | --- |
-| GitHub sign-in works | PASS / FAIL | Account username: jgbennett245 |
+| GitHub sign-in works | PASS  | Account username: jgbennett245 |
 | Can view team repo https://github.com/EdTechForLearning/PREIShare-org-repo | PASS | |
-| Fork created in my account | PASS / FAIL | My fork URL: https://github.com/jgbennett245/PREIShare-org-repo |
+| Fork created in my account | PASS  | My fork URL: https://github.com/jgbennett245/PREIShare-org-repo |
 
 ## 2. Git install and identity
 
 ```text
 # paste output of: git --version
-
+git version 2.43.0
 # paste output of: git config --global user.name
+John Bennett
 # paste output of: git config --global user.email
+10993793@uvu.edu
 # (email may be partially redacted in shared copies)
 ```
 
@@ -36,7 +38,7 @@ Identity configured: PASS
 
 ## 4. Remotes (run inside the repo)
 
-- `git remote add upstream https://github.com/EdTechForLearning/PREIShare-org-repo.git` run: PASS / FAIL
+- `git remote add upstream https://github.com/EdTechForLearning/PREIShare-org-repo.git` run: PASS
 
 ### git remote -v
 
@@ -67,7 +69,7 @@ upstream points at the team repo: PASS
 ```
 
 Default branch name: `<main or other>`
-Working tree clean after clone: PASS / FAIL
+Working tree clean after clone: PASS 
 
 ## 6. Auth notes (no secrets)
 
