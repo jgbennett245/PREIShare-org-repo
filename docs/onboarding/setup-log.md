@@ -56,7 +56,10 @@ upstream points at the team repo: PASS
 ## 5. Post-clone verification
 
 ### git status
+On branch main
+Your branch is up to date with 'origin/main'.
 
+nothing to commit, working tree clean
 ```text
 # paste output — expect clean tree on default branch
 ```
@@ -67,8 +70,8 @@ upstream points at the team repo: PASS
 # paste output of: git branch --show-current
 # or: git branch
 ```
-
-Default branch name: `<main or other>`
+main
+Default branch name: `main`
 Working tree clean after clone: PASS 
 
 ## 6. Auth notes (no secrets)
