@@ -20,9 +20,11 @@ PREIshare currently appears to be a single-package React 19 and TanStack Start a
 | Path | Kind (app / package / config / docs / other) | One-sentence purpose | Verified by me? (yes/no) |
 |------|-----------------------------------------------|----------------------|---------------------------|
 | `.cta.json` | config | Scaffold metadata identifies the project as a TypeScript React file-router app. | yes |
+| `.cursor/` | config | Cursor-specific project rules live under `rules/`. | yes |
 | `.cursorrules` | config | Repository-specific coding and AI-agent guidance. | yes |
 | `.git/` | other | Git's local repository metadata; do not edit its internals directly. | yes |
 | `.gitignore` | config | Lists dependencies, build output, local env files, and generated state excluded from Git. | yes |
+| `.github/` | config | Workspace customizations live under `agents/`; no CI workflow was found. | yes |
 | `.tanstack/` | other | Contains a `tmp/` directory and appears to hold generated TanStack tooling state. | yes |
 | `.vscode/` | config | Workspace editor settings, including protection for the generated route tree. | yes |
 | `AGENTS.md` | config | Repository guidance for contributors and coding agents. | yes |
@@ -31,7 +33,7 @@ PREIshare currently appears to be a single-package React 19 and TanStack Start a
 | `docs/` | docs | Project documentation, including onboarding notes. | yes |
 | `node_modules/` | other | Locally installed npm dependencies; ignored by Git. | yes |
 | `package-lock.json` | config | npm dependency lockfile used for reproducible installs. | yes |
-| `package.json` | config | Root app manifest, dependencies, and dev/build scripts. | yes |
+| `package.json` | config | Root app manifest for package `preishare-org-repo`, dependencies, and dev/build scripts. | yes |
 | `src/` | app | Main application source, including routes, components, helpers, and styles. | yes |
 | `tsconfig.json` | config | TypeScript compiler options and strictness settings. | yes |
 | `tsr.config.json` | config | TanStack Router generator target configuration (`react`). | yes |
@@ -63,9 +65,15 @@ PREIshare currently appears to be a single-package React 19 and TanStack Start a
 - Build/dev tooling: `vite.config.ts` configures Vite, TanStack Start, React, and Tailwind CSS.
 - Lint/format config and scripts: no ESLint/Prettier configuration or lint/format scripts found.
 - CI: no GitHub Actions workflows or common GitLab, CircleCI, Azure Pipelines, Jenkins, or Buildkite configuration found.
-- Editor/agent guidance: `.vscode/settings.json`, `AGENTS.md`, and `.cursorrules`.
+- Editor/agent guidance: `.vscode/settings.json`, `AGENTS.md`, `.cursorrules`, `.cursor/rules/preishare.mdc`, and `.github/agents/top-level-repo-inventory.agent.md`.
 - Root package scripts relevant to development/build: `dev`, `build`, `preview`, and `generate-routes`. No `test` script is declared.
 - CI and shared configuration affect the whole project; treat them as **do-not-edit-yet** for a first feature PR unless a reviewed task specifically requires a change.
+- Path and package references in the guidance files:
+	- `docs/`, `docs/onboarding/repo-map.md`, `src/routes/`, `src/router.tsx`, `src/components/`, `src/styles.css`, `vite.config.ts`, `tsr.config.json`, `.cta.json`, and `package.json` are current paths covered in this map.
+	- `my-tanstack-app/` is a historical scaffold path mentioned in `AGENTS.md`; setup notes say it was flattened into the repository root, so it is not a current app directory.
+	- `CONTRIBUTORS`-style root docs and package/app README files are general examples, not required directories/files. The actual root `README.md` is listed above; no `CONTRIBUTORS` file was found.
+	- `lib/supabase.ts` is referenced by `.cursorrules` but is absent from the inspected tree. `SUPABASE_URL`, `process.env.MY_SECRET`, and `VITE_*` are variable-name examples/patterns, not confirmed environment values.
+	- `@tanstack/cli@latest` and `@tanstack/start-client-core#...` are scaffold/Intent documentation references in `AGENTS.md`, not additional app package roots; the app package name is `preishare-org-repo`.
 
 ## 6. Safe first-touch vs do-not-edit-yet
 
@@ -89,7 +97,7 @@ PREIshare currently appears to be a single-package React 19 and TanStack Start a
 ## 7. Open questions for the team
 
 - What is PREIShare's current product mission and first user workflow? The orientation notes leave these sections blank, and the visible routes are starter content.
-- Is Supabase planned or already used outside this checkout? `.cursorrules` names a Supabase client path that is not present in the inspected tree.
+- The always-applied `.cursor/rules/preishare.mdc` calls this a monorepo and names Supabase/PostgreSQL/pgvector, while the inspected tree has one package manifest and no database config. Are those future plans, or is the rule stale? `.cursorrules` also names an absent Supabase client path.
 - What test, lint, format, and CI checks should a first feature PR satisfy? None are declared or configured in the inspected files.
 - What deployment target and release process should future contributors expect?
 - Are `dist/` and `.tanstack/tmp/` intentionally generated locally, and should they remain ignored as currently configured?
