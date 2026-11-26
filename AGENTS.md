@@ -9,7 +9,19 @@ Before editing files for a substantial task:
 - Multiple matches: prefer the most specific local skill for the package or concern you are changing; load additional skills only when the task spans multiple packages or concerns.
 <!-- intent-skills:end -->
 
-# Project context
+## PREIshare project guidance
+
+Before editing project files, read:
+
+- [PREIshare project rules](.cursor/rules/preishare.mdc) for the stack, safety boundaries, and contribution expectations.
+- [Repository map](docs/onboarding/repo-map.md) for verified paths and repository structure.
+- [Team orientation notes](docs/onboarding/team-orientation-notes.md) for product context and the contribution workflow.
+
+Treat the scaffold notes below as implementation history, not the complete product brief. If they conflict with these handbook files or the checked-in implementation, flag the mismatch and ask before assuming.
+
+## Scaffold context
+
+The application began as a TanStack Start scaffold. Use the handbook links above for current project and onboarding context; the details below record the scaffold setup and tooling.
 
 ## Scaffold commands
 
@@ -80,17 +92,17 @@ npm run generate-routes
 
 Blank scaffold has no host-specific adapter yet. TanStack Start deploys via Vite + Nitro (see `npx @tanstack/intent@latest load @tanstack/start-client-core#start-core/deployment`). Typical next step for Vercel/Node/Railway is adding the Nitro Vite plugin when you are ready to deploy.
 
-## Architectural decisions
+## Scaffold decisions and caveats
 
-- Keep the generated structure; prefer Intent skills over guessing Start/Router APIs.
+- Keep the generated structure where it remains appropriate; prefer Intent skills over guessing Start/Router APIs.
 - Isomorphic-by-default: use `createServerFn` / `createServerOnlyFn` / `createClientOnlyFn` for environment boundaries.
-- No auth, DB, or partner integrations in this blank app.
+- The initial scaffold added no auth, database, or partner integrations. Check the current repository map and implementation before making claims or planning changes in those areas.
 
 ## Known gotchas
 
 - CLI `--tailwind` flag is ignored (Tailwind is on by default).
 - Nested `my-tanstack-app/` from the create command was flattened into this repo root on purpose.
-- `intent install` keeps a short skill-loading block at the top of this file; durable project notes live below it.
+- `intent install` keeps a short skill-loading block at the top of this file; durable project and onboarding context lives in the handbook files linked above.
 - Future Intent versions may require an explicit `intent.skills` allowlist.
 
 ## Next steps
