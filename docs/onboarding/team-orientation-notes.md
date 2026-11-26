@@ -10,10 +10,11 @@ Date: 2026-09-09
 - I contribute by forking this repo and opening pull requests from my fork. I do not push to the team repo directly.
 
 ## 1. Product mission (my words)
-Designing the PREIShare realty app.
+
+PREIShare is a website designed to help people make better real estate decisions using clear intelligence. We use industry standard tools (Tanstack, Typescript, React etc.). My job is to make gradual agent-assisted changes to improve the application. 
+
 ## 2. Everyday collaboration → engineering workflow
 
-## 3. Actors in a pull-request workflow
 | Everyday picture | PREIshare engineering parallel |
 | --- | --- |
 | Shared final document | Shared default branch on the team repository |
@@ -21,6 +22,13 @@ Designing the PREIShare realty app.
 | Save history / version notes | Commits with clear messages |
 | Ask a peer to review before publish | Open a pull request (PR) for review |
 | Peer approves, then we publish | Review passes, then the PR can merge |
+
+## 3. Actors in a pull-request workflow
+
+- **Contributor (me):** picks a tiny safe change, works on a branch, describes the change, responds to feedback.
+- **Reviewer (teammate or simulated reviewer):** checks correctness, scope, and clarity before merge.
+- **Shared repository:** the team’s source of truth on GitHub; default branch is protected by process even when tools allow edits.
+- **Automation (later):** checks such as GitHub Actions may run on the PR; I treat failing checks as blockers, not noise.
 
 ## 4. First-PR definition of done (beginner-safe)
 
