@@ -23,5 +23,5 @@
 ## First production deploy
 
 - Status: **Failed** — confirmed by the latest Vercel Production deployment status for `main`; failure details are not available here.
-- Incognito check of Production URL: **Failed** (confirmed by contributor; URL checked was not recorded here).
+- Incognito check of Production URL: **Pass** — contributor confirmed the app loaded in a private window with HTTP 200. The regular browser page and a cookie-free HTTP request also returned the TanStack app; no 404 or Vercel dashboard was shown.
 - Follow-up: verify the stable Production domain in Vercel project Settings → Domains and replace the unconfirmed value above. The previously recorded `prei-share-org-repo-maude.vercel.app` returns `404 DEPLOYMENT_NOT_FOUND`; do not reuse it unless Vercel confirms it as the Production domain.
