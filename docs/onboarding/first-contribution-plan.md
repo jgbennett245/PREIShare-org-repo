@@ -9,9 +9,9 @@
 Add myself as a new contributor in a contributors doc and make one minimal, reviewable docs (or agreed low-risk UI) touch so the team can practice review on a small first PR.
 
 ## Why this surface (link to prior artifacts)
-- From `docs/onboarding/repo-map.md`: <quote the safe area you chose, e.g. top-level docs / onboarding paths>
-- From `docs/onboarding/team-orientation-notes.md`: <how this meets first-PR definition of done>
-- From `docs/onboarding/ai-tooling-verification.md`: <note that agent rules are verified enough to assist implementation next>
+- From `docs/onboarding/repo-map.md`: “Documentation-only and intended to help new contributors orient themselves” (safe first-touch: `docs/onboarding/`).
+- From `docs/onboarding/team-orientation-notes.md`: “The change is intentionally small” and “A teammate can understand the diff without a meeting.”
+- From `docs/onboarding/ai-tooling-verification.md`: ST1, ST2, ST3, and ST4 are recorded as pass; the repo-map/rules discrepancies are listed as limitations.
 
 ## In scope (only these)
 1. Create or update `CONTRIBUTORS.md` with my name, GitHub handle, and a one-line role (e.g. "Onboarding engineer").
@@ -31,11 +31,11 @@ Add myself as a new contributor in a contributors doc and make one minimal, revi
 | File | Action | Why |
 |------|--------|-----|
 | CONTRIBUTORS.md | create or update | Add my contributor entry |
-| <optional second path from repo-map> | edit | <one-line reason or "n/a"> |
+| n/a | n/a | No optional second touch planned |
 | docs/onboarding/first-contribution-notes.md | create (next step) | Record what the agent did and what I verified |
 
 ## Acceptance criteria
-- [ ] I am on feature branch `docs/first-contribution-<your-handle>` (not the default branch).
+- [ ] I am on feature branch `docs/first-contribution-jgbennett245` (not the default branch).
 - [ ] `CONTRIBUTORS.md` lists my name and GitHub handle in a consistent format.
 - [ ] Any second touch is limited to the single file named above and does not change behavior beyond copy/docs.
 - [ ] No secrets, `.env` files, or generated build artifacts are included.
