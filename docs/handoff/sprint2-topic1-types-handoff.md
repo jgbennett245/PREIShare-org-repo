@@ -6,7 +6,7 @@
 
 ## 1. Client story recap
 
-Sprint 2 Topic 1 produced a compile-time TypeScript model for investor listings and valid sample fixtures. TypeScript catches incompatible values in typed code; it does not validate untrusted JSON or data arriving from an API or database.
+The client pain was concrete: listings could have missing prices, status strings spelled several ways, or nested address fields that disappeared between screens. Strict `InvestorListing` types make these mistakes fail at compile time in typed code: required price and address fields cannot be omitted, and the status union rejects unrecognized spellings. That protects code as it is written, but does not validate untrusted JSON arriving from an API or database; those boundaries still need runtime validation.
 
 ## 2. What we shipped this topic
 
