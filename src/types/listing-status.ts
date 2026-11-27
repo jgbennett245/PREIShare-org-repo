@@ -6,4 +6,5 @@ export type ListingStatus =
   | "active"
   | "under_contract"
   | "closed";
+  | "archived";
 

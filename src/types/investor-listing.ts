@@ -7,7 +7,7 @@ import type { Ownership } from "./ownership";
 /** Core PREIshare investor listing. */
 export interface InvestorListing {
   /** Stable unique id for this listing (assigned by the system). */
-  id: string;
+  readonly id: string;
 
   /** Short public headline shown in search results and cards. */
   title: string;
@@ -26,6 +26,9 @@ export interface InvestorListing {
   contacts: InvestorContact[];
   primaryContactId: string;
   ownership: Ownership;
+  readonly createdAt: string;
+  readonly updatedAt: string;
+  
 
   /**
    * Asking price in whole US dollars (no currency symbol).
@@ -33,9 +36,20 @@ export interface InvestorListing {
    */
   askingPrice: number;
 
-  /** ISO-8601 datetime string when the listing was first created. */
-  createdAt: string;
-
-  /** ISO-8601 datetime string when the listing was last updated. */
-  updatedAt: string;
+  
 }
+export type InvestorListing =
+  | (InvestorListingBase & {
+      status: 'draft' | 'active' | 'under_contract' | 'archived';
+      /** Not used unless the listing is closed. */
+      closedAt?: undefined;
+    })
+  | (InvestorListingBase & {
+      status: 'closed';
+      /** ISO date string — required when the listing is closed. */
+      closedAt: string;
+    });
+
+// Optional helper aliases (nice for fixtures later; keep only if names stay simple)
+export type ClosedInvestorListing = Extract<InvestorListing, { status: 'closed' }>;
+export type OpenInvestorListing = Exclude<InvestorListing, { status: 'closed' }>;
