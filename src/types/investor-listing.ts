@@ -2,6 +2,8 @@ import type { ListingStatus } from "./listing-status";
 import type { PropertyType } from "./property-type";
 import type { Address } from "./address";
 import type { FinancialSummary } from "./financial-summary";
+import type { InvestorContact } from "./investor-contact";
+import type { Ownership } from "./ownership";
 /** Core PREIshare investor listing. */
 export interface InvestorListing {
   /** Stable unique id for this listing (assigned by the system). */
@@ -21,6 +23,9 @@ export interface InvestorListing {
 
   address: Address;
   financialSummary?: FinancialSummary;
+  contacts: InvestorContact[];
+  primaryContactId: string;
+  ownership: Ownership[];
 
   /**
    * Asking price in whole US dollars (no currency symbol).
