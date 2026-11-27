@@ -9,7 +9,7 @@
 | --- | --- |
 | GitHub repository | `https://github.com/jgbennett245/PREIShare-org-repo` |
 | Instructor collaborator | `thortek` added: yes |
-| Vercel Production URL | `https://prei-share-org-repo-mauve.vercel.app/` — copy the stable Production domain from Vercel project Settings → Domains |
+| Vercel Production URL | `https://prei-share-org-repo-mauve.vercel.app` |
 | Preview URLs | Do **not** submit these to Canvas |
 
 ## Hobby constraints I will keep
@@ -22,6 +22,5 @@
 
 ## First production deploy
 
-- Status: **Failed** — confirmed by the latest Vercel Production deployment status for `main`; failure details are not available here.
-- Incognito check of Production URL: **Pass** — contributor confirmed the app loaded in a private window with HTTP 200. The regular browser page and a cookie-free HTTP request also returned the TanStack app; no 404 or Vercel dashboard was shown.
-- Follow-up: verify the stable Production domain in Vercel project Settings → Domains and replace the unconfirmed value above. The previously recorded `prei-share-org-repo-maude.vercel.app` returns `404 DEPLOYMENT_NOT_FOUND`; do not reuse it unless Vercel confirms it as the Production domain.
+- Status: **Ready** — the current Production deployment from `main` is Ready in Vercel.
+- Incognito check of Production URL: **Pass** — contributor confirmed that `https://prei-share-org-repo-mauve.vercel.app` loaded the app with HTTP 200 in a private window after the latest deployment. The regular browser also loaded the TanStack app; no 404 or Vercel dashboard was shown.
