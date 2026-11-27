@@ -52,6 +52,6 @@ Add myself as a new contributor in a contributors doc and make one minimal, revi
 - Risk: Editing default branch by mistake. Mitigation: check `git branch` before every edit session.
 
 ## Definition of done for this planning step
-- [ ] Feature branch created from updated default branch.
+- [x] Feature branch created from updated default branch.
 - [ ] This plan file saved at `docs/onboarding/first-contribution-plan.md` with all sections filled (no angle-bracket placeholders left).
 - [ ] Ready to implement in the next step without re-deciding scope.
