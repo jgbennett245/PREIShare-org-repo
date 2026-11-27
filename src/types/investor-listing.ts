@@ -37,12 +37,21 @@ export interface InvestorListingBase {
   askingPrice: number;
 }
 
+type CompleteInvestorListingFields = Omit<InvestorListingBase, "financials" | "contacts"> & {
+  financials: FinancialSummary;
+  contacts: [InvestorContact, ...InvestorContact[]];
+};
+
 export type InvestorListing =
   | (InvestorListingBase & {
-      status: "draft" | "active" | "under_contract" | "archived";
+      status: "draft" | "archived";
       closedAt?: never;
     })
-  | (InvestorListingBase & {
+  | (CompleteInvestorListingFields & {
+      status: "active" | "under_contract";
+      closedAt?: never;
+    })
+  | (CompleteInvestorListingFields & {
       status: "closed";
       /** ISO date string — required when the listing is closed. */
       closedAt: string;
