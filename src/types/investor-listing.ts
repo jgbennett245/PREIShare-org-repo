@@ -25,7 +25,7 @@ export interface InvestorListing {
   financialSummary?: FinancialSummary;
   contacts: InvestorContact[];
   primaryContactId: string;
-  ownership: Ownership[];
+  ownership: Ownership;
 
   /**
    * Asking price in whole US dollars (no currency symbol).
