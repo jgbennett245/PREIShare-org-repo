@@ -1,43 +1,23 @@
-{
-  "name": "preishare-investor-listing-types",
-  "private": true,
-  "scripts": {
-    "typecheck": "tsc --noEmit"
-  },
-  "devDependencies": {
-    "typescript": "^5.4.0"
-  }
-}
-
-# --- docs/type-safety/verification-checklist.md (scaffold outline) ---
-
 # Investor listing types — verification checklist
 
-Use this list before review. Check each box only when you have evidence.
+## Model and domain
 
-## A. Domain coverage
-- [ ] Every required field from docs/domain/listing-field-inventory.md appears on InvestorListing (or a nested type it uses).
-- [ ] Listing status values match the allowed business statuses (no free-form strings).
-- [ ] Property type values match the allowed property kinds.
-- [ ] Address and FinancialSummary nested shapes match the inventory.
-- [ ] Investor contact and ownership relationship fields match the domain brief.
+- [ ] Check `InvestorListing` fields against `src/types/investor-listing.ts`: `id`, `title`, `summary`, `status`, `propertyType`, `address`, `financials`, `contacts`, `primaryContactId`, `ownership`, `askingPrice`, `createdAt`, and `updatedAt`; `closedAt` is required only for `closed`.
+- [ ] Check nested fields against `src/types/address.ts` (`street`, `city`, `region`, `postalCode`, `country`), `src/types/financial-summary.ts` (`noi`, `capRate`, `occupancyRate`, `askingPrice`), `src/types/investor-contact.ts` (`id`, `fullName`, `role`, `email`, optional `phone`), and `src/types/ownership.ts` (`ownerName`, optional `notes` and `ownershipPercent`).
+- [ ] Confirm the closed status set in `src/types/listing-status.ts`: `draft`, `active`, `under_contract`, `closed`, `archived`.
+- [ ] Confirm the closed property type set in `src/types/property-type.ts`: `single_family`, `multi_family`, `commercial`, `land`.
+- [ ] Compare the checked-in types with `docs/domain/investor-listing-domain-brief.md` and `docs/domain/listing-field-inventory.md`; resolve or record differences before sign-off. The current names and values differ (including `summary`/`description`, `street`/`line1`, and the status and property-type sets).
+- [ ] Confirm public types are exported from `src/types/index.ts`.
 
-## B. Type safety shape
-- [ ] Public types are exported from src/types/index.ts.
-- [ ] Discriminated / narrowed status modeling (if used) still matches docs/type-safety/expected-type-errors.md.
-- [ ] Readonly intent is documented where the team agreed on it.
+## Fixtures
 
-## C. Fixtures
-- [ ] src/fixtures/sample-investor-listings.ts typechecks cleanly and includes more than one realistic listing.
-- [ ] src/fixtures/invalid-listings.errors.ts still demonstrates the intentional failures listed in docs/type-safety/expected-type-errors.md.
-- [ ] Expected-error notes still match the real compiler messages (no stale examples).
+- [ ] Check `src/fixtures/sample-investor-listings.ts`: `sampleActiveListing`, `sampleDraftListing`, `sampleUnderContractListing`, `sampleClosedListing`, and `sampleInvestorListings` use the checked-in types and statuses.
+- [ ] If `src/fixtures/invalid-listings.errors.ts` is present, confirm its intentional examples match `docs/type-safety/expected-type-errors.md` and keep it outside the normal typecheck.
+- [ ] Confirm `tsconfig.json` excludes `src/fixtures/invalid-listings.errors.ts` from the `src/**/*.ts` include pattern.
 
-## D. Typecheck gate
-- [ ] package.json defines a `typecheck` script that runs `tsc --noEmit`.
-- [ ] Running the typecheck script from the project root succeeds for valid sources.
-- [ ] The intentional invalid fixtures file is not required to pass the normal typecheck gate.
-- [ ] src/types/README.md explains how a beginner runs typecheck and what success looks like.
+## Typecheck and sign-off
 
-## E. Sign-off
-- [ ] I re-ran typecheck after any last fixes.
-- [ ] I would hand this package to a teammate without a verbal walkthrough of secret steps.
+- [ ] Confirm the root `package.json` script runs `tsc --noEmit` as `npm run typecheck`.
+- [ ] Run `npm run typecheck` from the repository root; it exits successfully for valid sources and emits no JavaScript.
+- [ ] Confirm `src/types/README.md` documents how to run typecheck and what success means.
+- [ ] Re-run typecheck after the final change and record the result before review.
