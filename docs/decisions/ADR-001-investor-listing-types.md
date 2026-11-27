@@ -29,6 +29,12 @@ and its status-specific aliases from `src/types/index.ts`.
 | Status-specific listing shape | `draft` and `archived` use `InvestorListingBase` fields, allow optional `financials` and an empty contacts array, and have `closedAt?: never`. `active` and `under_contract` require `financials` and a non-empty contacts tuple, and have `closedAt?: never`. `closed` requires those same complete fields and `closedAt: string`. |
 | Status aliases | `ClosedInvestorListing` extracts the `closed` branch; `OpenInvestorListing` excludes it. |
 
+The closed string unions catch misspellings and competing spellings at
+compile-time in typed code. For example, `"under-contract"` cannot be passed
+where `ListingStatus` requires `"under_contract"`, reducing the risk that a
+listing is missed by status filters or workflow handling. The unions do not
+validate untrusted runtime data.
+
 `title`, `summary`, `primaryContactId`, `askingPrice`, and the other common
 fields are required by the TypeScript shape, but their string or numeric types
 do not enforce non-empty text, valid date formats, or business-level ranges.
@@ -48,6 +54,22 @@ implemented; those domain differences need separate resolution.
   checked with the root `npm run typecheck` script.
 - `InvestorListing` status branches enforce when `financials`, non-empty
   contacts, and `closedAt` are required.
+
+## Alternatives considered
+
+- **Loose `any` or untyped JSON:** Rejected for the shared listing model because
+  missing required fields and misspelled values would not be caught when code
+  constructs or consumes listings.
+- **One flat interface with optional fields:** Rejected because making every
+  status-dependent field optional would allow incomplete combinations, such as
+  an `active` listing without `financials` or a `closed` listing without
+  `closedAt`.
+- **TypeScript enums:** Not used for these vocabularies. String unions provide
+  the closed sets already implemented while keeping values as ordinary string
+  literals in listing data.
+- **Runtime schema libraries:** Deferred. This topic defines compile-time
+  TypeScript shapes; runtime validation at API or other untrusted-data
+  boundaries remains separate work.
 
 ## Out of scope
 
